@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./system.css" />
+    <title>Form</title>
+</head>
+<body>
+    <form id="schizoform">
+        <div class="row">
+            <div class="group">
+                <label for="Titul">Titul před jménem</label>
+               <select id="titulypred" multiple>
+                   <option value="Bc.">Bc.</option>
+                   <option value="Ing.">Ing.</option>
+                   <option value="MUDr.">MUDr.</option>
+                   <option value="MVDr.">MVDr.</option>
+                   <option value="Mgr.">Mgr.</option>
+                   <option value="JUDr.">JUDr.</option>
+                   <option value="PhDr.">PhDr.</option>
+                   <option value="RNDr.">RNDr.</option>
+                   <option value="PharmDr.">PharmDr.</option>
+                   <option value="Ph.D.">Ph.D.</option>
+                   <option value="prof.">prof.</option>
+                   <option value="doc.">doc.</option>
+                   <option value="CSc.">CSc.</option>
+                   <option value="DrSc.">DrSc.</option>
+                   <option value="PaedDr.">PaedDr.</option>
+                   <option value="Dr.">Dr.</option>
+                   <option value="PhMr.">PhMr.</option>
+                   <option value="DiS.">DiS.</option>
+               </select>
+               <em>Podržením CTRL vyberete více titulů</em>
+               <div id="titulprednenivseznamu">Titul není v seznamu</div>
+            </div>
+            <div class="group">
+                <label for="Jmeno">Jméno</label>
+                <input type="text" value="" name="Jmeno" id="jmeno">
+            </div>
+            <div class="group">
+                <label for="Prijmeni">Příjmení</label>
+                <input type="text" name="Prijmeni" id="prijmeni">
+            </div>
+            <div class="group">
+                <label for="Titul">Titul za jménem</label>
+               <select id="titulyza" multiple>
+                   <option value="Bc.">Bc.</option>
+                   <option value="Ing.">Ing.</option>
+                   <option value="MUDr.">MUDr.</option>
+                   <option value="MVDr.">MVDr.</option>
+                   <option value="Mgr.">Mgr.</option>
+                   <option value="JUDr.">JUDr.</option>
+                   <option value="PhDr.">PhDr.</option>
+                   <option value="RNDr.">RNDr.</option>
+                   <option value="PharmDr.">PharmDr.</option>
+                   <option value="Ph.D.">Ph.D.</option>
+                   <option value="prof.">prof.</option>
+                   <option value="doc.">doc.</option>
+                   <option value="CSc.">CSc.</option>
+                   <option value="DrSc.">DrSc.</option>
+                   <option value="PaedDr.">PaedDr.</option>
+                   <option value="Dr.">Dr.</option>
+                   <option value="PhMr.">PhMr.</option>
+                   <option value="DiS.">DiS.</option>
+               </select>
+               <em>Podržením CTRL vyberete více titulů</em>
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="group"> 
+                <label for="Email">Email</label>
+                <input type="text" name="Email" id="email"></div>
+            <div class="group">
+                <label for="CLK">Číslo ČLK</label>
+                <input type="number" name="CLK" id="clk"></div>
+        </div>
+       
+        <div class="row">
+            <div class="group">
+                <label for="Souhlas">Souhlasím se zpracováním osobních údajů</label>
+                <input type="checkbox" name="Souhlas" id="souhlas">
+            </div>
+        </div>
+        <input type="submit" value="Odeslat">
+    </form>
+    <div id="shrnutiRegistrace">
+        <h1>Shrnutí vaší registrace</h1>
+        <div class="row">
+        Tituly před jménem: <strong id="shrnutititulpred"></strong></div>
+        <div class="row">
+            Jméno: <strong id="shrnutijmeno"></strong>
+        </div>
+        <div class="row">
+            Příjmení: <strong id="shrnutiprijmeni"></strong>
+        </div>
+        <div class="row">
+            Tituly za jménem: <strong id="shrnutititulza"></strong></div>
+        <div class="row">
+            Email Lékaře: <strong id="shrnutiemailu"></strong></div>
+        <div class="row">
+            Vaše ČLK číslo: <strong id="shrnutiCLK"></strong></div>
+    </div>
+  <script src="./server.js"></script>
+</body>
+</html>
