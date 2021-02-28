@@ -47,11 +47,7 @@
         cisloCLKFinal = target.value;
         zpracujCisloClk();
     });
-    var titulPredNeniVSeznamu = document.getElementById("titulprednenivseznamu");
-    titulPredNeniVSeznamu.addEventListener("click", function () {
-        var vyplnenyTitul = prompt("Zdejte prosím chybějící titul před jménem");
-        pridanyTitulPredJmenemFinal.push(vyplnenyTitul);
-    });
+    
     /**
      * HANDLE FUNCTION LIST
      */

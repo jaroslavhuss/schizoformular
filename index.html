@@ -8,8 +8,10 @@
     <title>Form</title>
 </head>
 <body>
+    <h1>Registrace na webinář</h1>
+    <div class="row">
     <form id="schizoform">
-        <div class="row">
+        <div class="col">
             <div class="group">
                 <label for="Titul">Titul před jménem</label>
                <select id="titulypred" multiple>
@@ -33,7 +35,7 @@
                    <option value="DiS.">DiS.</option>
                </select>
                <em>Podržením CTRL vyberete více titulů</em>
-               <div id="titulprednenivseznamu">Titul není v seznamu</div>
+             
             </div>
             <div class="group">
                 <label for="Jmeno">Jméno</label>
@@ -69,39 +71,41 @@
                
             </div>
         </div>
-        <div class="row">
+        <div class="col">
             <div class="group"> 
                 <label for="Email">Email</label>
-                <input type="text" name="Email" id="email"></div>
+                <input type="email" name="Email" id="email">
+                <em>Váš email: <strong id="shrnutiemailu"></strong></em>
+            </div>
+               
             <div class="group">
                 <label for="CLK">Číslo ČLK</label>
-                <input type="number" name="CLK" id="clk"></div>
+                <input type="number" name="CLK" id="clk">
+            <em>Vaše ČLK číslo: <strong id="shrnutiCLK"></strong></em>
+            </div>
         </div>
        
-        <div class="row">
+        
+    </form>
+    <div id="shrnutiRegistrace">
+        <div class="col">
+            <br>
+        <span id="shrnutititulpred"></span> <strong id="shrnutijmeno"></strong> <strong id="shrnutiprijmeni"></strong> <span id="shrnutititulza"></span>
+    <div class="sendFinal">
+        <div class="col">
             <div class="group">
                 <label for="Souhlas">Souhlasím se zpracováním osobních údajů</label>
+                <br>
                 <input type="checkbox" name="Souhlas" id="souhlas">
             </div>
         </div>
-        <input type="submit" value="Odeslat">
-    </form>
-    <div id="shrnutiRegistrace">
-        <h1>Shrnutí vaší registrace</h1>
-        <div class="row">
-        Tituly před jménem: <strong id="shrnutititulpred"></strong></div>
-        <div class="row">
-            Jméno: <strong id="shrnutijmeno"></strong>
+        <div class="group">
+            <div class="btn">Upravit mé oslovení</div>
+            <input type="submit" value="Odeslat">
         </div>
-        <div class="row">
-            Příjmení: <strong id="shrnutiprijmeni"></strong>
-        </div>
-        <div class="row">
-            Tituly za jménem: <strong id="shrnutititulza"></strong></div>
-        <div class="row">
-            Email Lékaře: <strong id="shrnutiemailu"></strong></div>
-        <div class="row">
-            Vaše ČLK číslo: <strong id="shrnutiCLK"></strong></div>
+    </div>
+    </div>
+</div>
     </div>
   <script src="./server.js"></script>
 </body>
