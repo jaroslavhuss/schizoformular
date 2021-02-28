@@ -5,7 +5,9 @@
     var prijmeniLekareFinal = "";
     var emailLekareFinal = "";
     var cisloCLKFinal = "";
-    var pridanyTitulPredJmenemFinal;
+    var arrTitulPredJmenemFinal = "";
+    var arrTitulZaJmenemFinal = "";
+    var uplneOsloveniFinal = "";
     //Prevents form from reloading a page on submit
     var form = document.getElementById("schizoform");
     form.addEventListener("submit", function (e) { return e.preventDefault(); });
@@ -47,7 +49,12 @@
         cisloCLKFinal = target.value;
         zpracujCisloClk();
     });
-    
+    var upraveniOsloveni = document.getElementById("upraveniosloveni");
+    var osloveniFinal = document.getElementById("osloveniFinal");
+    upraveniOsloveni.addEventListener("click", function () {
+        var inputFromUser = prompt("Upravte své jméno a tituly ve svém certifikátu", arrTitulPredJmenemFinal + " " + jmenoLekareFinal + " " + prijmeniLekareFinal + " " + arrTitulZaJmenemFinal);
+        osloveniFinal.innerHTML = inputFromUser;
+    });
     /**
      * HANDLE FUNCTION LIST
      */
@@ -76,6 +83,7 @@
         var string = "";
         arrTitulPredJmenem.forEach(function (titul) { return string += titul + " "; });
         shrnutiTitulPredZa.innerHTML = string;
+        arrTitulPredJmenemFinal = string;
     }
     function zpracujTitulZa(e) {
         arrTitulZaJmenem = [];
@@ -89,6 +97,7 @@
         var string = "";
         arrTitulZaJmenem.forEach(function (titul) { return string += titul + " "; });
         shrnutiTitulZa.innerHTML = string;
+        arrTitulZaJmenemFinal = string;
     }
     function zpracujJmeno() {
         var shrnutiJmena = document.getElementById("shrnutijmeno");

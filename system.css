@@ -57,7 +57,7 @@ h1{
     box-shadow: 9px -12px 1pc -24px;
     background:#098bd6;
 }
- input[type="submit"]{
+ input[type="submit"],.btn{
   padding: 24px 0px;
   text-align: center;
   border-bottom: 1px solid #098bd6;
@@ -68,6 +68,11 @@ h1{
   color: white;
   border:none;
   border-radius:12px;
+  cursor:pointer;
+}
+.btn{
+   background-color:rosybrown;
+   display:inline-block;
 }
 
 #schizoform input,#schizoform select{

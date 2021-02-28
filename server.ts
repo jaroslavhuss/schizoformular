@@ -5,7 +5,9 @@
     let prijmeniLekareFinal:string = "";
     let emailLekareFinal:string = "";
     let cisloCLKFinal:string = "";
-    let pridanyTitulPredJmenemFinal:string[];
+    let arrTitulPredJmenemFinal:string = "";
+    let arrTitulZaJmenemFinal:string= "";
+    let uplneOsloveniFinal = "";
     //Prevents form from reloading a page on submit
     const form:HTMLElement = document.getElementById("schizoform");
     form.addEventListener("submit", (e) => e.preventDefault());
@@ -43,10 +45,12 @@
         cisloCLKFinal = target.value;
         zpracujCisloClk();
     });
-    const titulPredNeniVSeznamu:any = document.getElementById("titulprednenivseznamu");
-    titulPredNeniVSeznamu.addEventListener("click", () => {
-        const vyplnenyTitul = prompt("Zdejte prosím chybějící titul před jménem");
-        pridanyTitulPredJmenemFinal.push(vyplnenyTitul);
+
+    const upraveniOsloveni:any = document.getElementById("upraveniosloveni");
+    const osloveniFinal:any = document.getElementById("osloveniFinal");
+    upraveniOsloveni.addEventListener("click", () => {
+        const inputFromUser = prompt("Upravte své jméno a tituly ve svém certifikátu", `${arrTitulPredJmenemFinal} ${jmenoLekareFinal} ${prijmeniLekareFinal} ${arrTitulZaJmenemFinal}`);
+        osloveniFinal.innerHTML = inputFromUser;
     })
     /**
      * HANDLE FUNCTION LIST
@@ -76,6 +80,7 @@
         let string:string = "";
         arrTitulPredJmenem.forEach((titul) => string+=`${titul} `);
         shrnutiTitulPredZa.innerHTML = string;
+        arrTitulPredJmenemFinal = string;
     }
     function zpracujTitulZa(e):void{
         arrTitulZaJmenem = [];
@@ -89,6 +94,7 @@
         let string:string = "";
         arrTitulZaJmenem.forEach((titul) => string+=`${titul} `);
         shrnutiTitulZa.innerHTML = string;
+        arrTitulZaJmenemFinal = string;
     }
     function zpracujJmeno():void{
         const shrnutiJmena:HTMLElement = document.getElementById("shrnutijmeno");
