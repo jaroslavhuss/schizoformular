@@ -9,105 +9,97 @@
 </head>
 <body>
     <h1>Registrace na webinář</h1>
-    <div class="row">
-    <form id="schizoform">
-        <div class="col">
-            <div class="group">
-                <label for="Titul">Titul před jménem</label>
-               <select id="titulypred" multiple>
-                   <option value="Bc.">Bc.</option>
-                   <option value="Ing.">Ing.</option>
-                   <option value="MUDr.">MUDr.</option>
-                   <option value="MVDr.">MVDr.</option>
-                   <option value="Mgr.">Mgr.</option>
-                   <option value="JUDr.">JUDr.</option>
-                   <option value="PhDr.">PhDr.</option>
-                   <option value="RNDr.">RNDr.</option>
-                   <option value="PharmDr.">PharmDr.</option>
-                   <option value="Ph.D.">Ph.D.</option>
-                   <option value="prof.">prof.</option>
-                   <option value="doc.">doc.</option>
-                   <option value="CSc.">CSc.</option>
-                   <option value="DrSc.">DrSc.</option>
-                   <option value="PaedDr.">PaedDr.</option>
-                   <option value="Dr.">Dr.</option>
-                   <option value="PhMr.">PhMr.</option>
-                   <option value="DiS.">DiS.</option>
-               </select>
-               <em>Podržením CTRL vyberete více titulů</em>
-             
-            </div>
-            <div class="group">
-                <label for="Jmeno">Jméno</label>
-                <input type="text" value="" name="Jmeno" id="jmeno">
-            </div>
-            <div class="group">
-                <label for="Prijmeni">Příjmení</label>
-                <input type="text" name="Prijmeni" id="prijmeni">
-            </div>
-            <div class="group">
-                <label for="Titul">Titul za jménem</label>
-               <select id="titulyza" multiple>
-                   <option value="Bc.">Bc.</option>
-                   <option value="Ing.">Ing.</option>
-                   <option value="MUDr.">MUDr.</option>
-                   <option value="MVDr.">MVDr.</option>
-                   <option value="Mgr.">Mgr.</option>
-                   <option value="JUDr.">JUDr.</option>
-                   <option value="PhDr.">PhDr.</option>
-                   <option value="RNDr.">RNDr.</option>
-                   <option value="PharmDr.">PharmDr.</option>
-                   <option value="Ph.D.">Ph.D.</option>
-                   <option value="prof.">prof.</option>
-                   <option value="doc.">doc.</option>
-                   <option value="CSc.">CSc.</option>
-                   <option value="DrSc.">DrSc.</option>
-                   <option value="PaedDr.">PaedDr.</option>
-                   <option value="Dr.">Dr.</option>
-                   <option value="PhMr.">PhMr.</option>
-                   <option value="DiS.">DiS.</option>
-               </select>
-               <em>Podržením CTRL vyberete více titulů</em>
-               
-            </div>
-        </div>
-        <div class="col">
-            <div class="group"> 
-                <label for="Email">Email</label>
-                <input type="email" name="Email" id="email">
-                <em>Váš email: <strong id="shrnutiemailu"></strong></em>
-            </div>
-               
-            <div class="group">
-                <label for="CLK">Číslo ČLK</label>
-                <input type="number" name="CLK" id="clk">
-            <em>Vaše ČLK číslo: <strong id="shrnutiCLK"></strong></em>
-            </div>
-        </div>
+    <div class="container">
+    <form id="schizoform" autocomplete="off">
+        <!--END FIRST ROW-->
+        <div class="row">
+            
        
-        
-    </form>
-    <div id="shrnutiRegistrace">
-        <div class="col">
-            <br>
-            <div id="osloveniFinal">
-        <span id="shrnutititulpred"></span> <strong id="shrnutijmeno"></strong> <strong id="shrnutiprijmeni"></strong> <span id="shrnutititulza"></span>
-    </div>
-        <div class="sendFinal">
-        <div class="col">
             <div class="group">
-                <label for="Souhlas">Souhlasím se zpracováním osobních údajů</label>
-                <br>
-                <input type="checkbox" name="Souhlas" id="souhlas">
+                <label for="Jmeno">Jméno <span class="mandatory">*</span></label>
+                <input autocomplete="false" type="text" value="" name="Jmeno" id="jmeno">
+            </div>
+            <div class="group">
+                <label for="Prijmeni">Příjmení <span class="mandatory">*</span></label>
+                <input autocomplete="false" type="text" name="Prijmeni" id="prijmeni">
+            </div>
+            <div class="group"> 
+                <label for="Email">Email <span class="mandatory">*</span></label>
+                <input autocomplete="false" type="email" name="Email" id="email">
+                <em><strong id="shrnutiemailu"></strong></em>
+            </div>
+               
+            <div class="group">
+                <label for="CLK">Číslo ČLK <span class="mandatory">*</span></label>
+                <input autocomplete="false" type="number" name="CLK" id="clk">
+            <em><strong id="shrnutiCLK"></strong></em>
+            </div>
+        
+    </div>
+        <div class="row">
+            <div class="group">
+               
+                <div class="custom-row">
+                    <div class="cont">
+                        <div class="nadpis-titulu">Titul před jménem</div>
+                    <div class="pool">
+                        <span class="the-title-before" clicked="false" >Bc.</span>
+                        <span class="the-title-before" clicked="false" >Ing.</span>
+                        <span class="the-title-before" clicked="false" >MUDr.</span>
+                        <span class="the-title-before" clicked="false" >MVDr.</span>
+                        <span class="the-title-before" clicked="false" >Mgr.</span>
+                        <span class="the-title-before" clicked="false" >JUDr.</span>
+                        <span class="the-title-before" clicked="false" >PhDr.</span>
+                        <span class="the-title-before" clicked="false" >RNDr.</span>
+                        <span class="the-title-before" clicked="false" >PharmDr.</span>
+                        <span class="the-title-before" clicked="false" >prof.</span>
+                        <span class="the-title-before" clicked="false" >doc.</span>
+                        <span class="the-title-before" clicked="false" >PaedDr.</span>
+                        <span class="the-title-before" clicked="false" >Dr.</span>
+                        <span class="the-title-before" clicked="false" >PhMr.</span>
+                        
+                    </div>
+                
+                    <span class="custom-titul" style="margin-top:5px">
+                        Vlastní titul: <br> <input style="padding:0" type="text" id="vlastni-titul-pred-jmenem">
+                     </span>
+                </div>
+                <div class="cont">
+                    <div class="nadpis-titulu">Titul za jménem</div>
+                    <div class="pool">
+                        <span class="the-title-after" clicked="false" >Ph.D.</span>
+                        <span class="the-title-after" clicked="false" >CSc.</span>
+                        <span class="the-title-after" clicked="false" >DrSc.</span>
+                        <span class="the-title-after" clicked="false" >DiS.</span>
+                    </div>
+                    <span class="custom-titul" style="margin-top:5px">
+                        Vlastní titul: <br><input style="padding:0" type="text" id="vlastni-titul-za-jmenem">
+                     </span>
+                </div>
             </div>
         </div>
-        <div class="group">
-            <div class="btn" id="upraveniosloveni">Upravit mé oslovení</div>
-            <input type="submit" value="Odeslat">
+          
         </div>
-    </div>
-    </div>
-</div>
+        
+</form>
+            <div id="shrnutiRegistrace">
+                <br>
+                <div id="osloveniFinal">
+                    <span id="shrnutititulpred"></span> <span id="shrnutisvehotitulupred"></span> <strong id="shrnutijmeno"></strong> <strong id="shrnutiprijmeni"></strong> <span id="shrnutititulza"></span> <span id="shrnutisvehotituluza"></span>
+                </div>
+                    <div class="sendFinal">
+                
+                    <div class="group">
+                            <label for="Souhlas">Souhlasím se zpracováním osobních údajů <span class="mandatory">*</span></label>
+                            <br>
+                            <input type="checkbox" name="Souhlas" id="souhlas">
+                    </div>
+                
+                    <div class="group">
+                        <input id="finalCheck" type="submit" value="Odeslat">
+                    </div>
+                </div>
+            </div>
     </div>
   <script src="./server.js"></script>
 </body>

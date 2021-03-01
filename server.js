@@ -1,23 +1,99 @@
 (function () {
-    var arrTitulPredJmenem = []; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    var arrTitulZaJmenem = []; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     var jmenoLekareFinal = ""; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     var prijmeniLekareFinal = "";
     var emailLekareFinal = "";
     var cisloCLKFinal = "";
-    var arrTitulPredJmenemFinal = "";
-    var arrTitulZaJmenemFinal = "";
-    var uplneOsloveniFinal = "";
+    var titulPredFinal = "";
+    var titulZaFinal = "";
+    var vlastniTitulPredJmenem = "";
+    var vlastniTitulZaJmenem = "";
+    /**
+     * Vlastní tituly před a za jménem
+     */
+    var inputVlastniTitulPredJmenem = document.getElementById("vlastni-titul-pred-jmenem");
+    var shrnutisvehotitulupred = document.getElementById("shrnutisvehotitulupred");
+    inputVlastniTitulPredJmenem.addEventListener("input", function (e) {
+        vlastniTitulPredJmenem = e.target.value;
+        shrnutisvehotitulupred.innerHTML = vlastniTitulPredJmenem;
+    });
+    var inputVlastniTitulzaJmenem = document.getElementById("vlastni-titul-za-jmenem");
+    var shrnutisvehotituluza = document.getElementById("shrnutisvehotituluza");
+    inputVlastniTitulzaJmenem.addEventListener("input", function (e) {
+        vlastniTitulZaJmenem = e.target.value;
+        shrnutisvehotituluza.innerHTML = vlastniTitulZaJmenem;
+    });
     //Prevents form from reloading a page on submit
     var form = document.getElementById("schizoform");
     form.addEventListener("submit", function (e) { return e.preventDefault(); });
+    var mainSubmit = document.getElementById("finalCheck");
+    mainSubmit.addEventListener("click", function () {
+        vyrendrujFinalniOsloveni();
+    });
+    /**
+     * ZPRACOVÁNÍ TITULŮ P5ED - NEBUDE TO PRDEL
+     */
+    var titulPredJmenem = document.getElementById("shrnutititulpred");
+    var titulyPredClass = document.getElementsByClassName("the-title-before");
+    var seznamTituluPredJmenem = {};
+    for (var c = 0; c < titulyPredClass.length; c++) {
+        seznamTituluPredJmenem[titulyPredClass[c].innerHTML] = false;
+        titulyPredClass[c].addEventListener("click", function (e) {
+            if (e.target.getAttribute("clicked") === "false") {
+                e.target.style.background = "#088bd6";
+                e.target.setAttribute("clicked", "true");
+            }
+            else {
+                e.target.style.background = "white";
+                e.target.setAttribute("clicked", "false");
+            }
+            var selectedTitul = e.target.innerHTML;
+            seznamTituluPredJmenem[selectedTitul] = !seznamTituluPredJmenem[selectedTitul];
+            vyrendrujTitulPred();
+        });
+    }
+    function vyrendrujTitulPred() {
+        titulPredFinal = "";
+        for (var key in seznamTituluPredJmenem) {
+            if (seznamTituluPredJmenem[key]) {
+                titulPredFinal += key + " ";
+            }
+        }
+        titulPredJmenem.innerHTML = titulPredFinal;
+    }
+    /**
+        * ZPRACOVÁNÍ TITULŮ P5ED - NEBUDE TO PRDEL
+        */
+    var titulZaJmenem = document.getElementById("shrnutititulza");
+    var titulyZaClass = document.getElementsByClassName("the-title-after");
+    var seznamTituluZaJmenem = {};
+    for (var c = 0; c < titulyZaClass.length; c++) {
+        seznamTituluZaJmenem[titulyZaClass[c].innerHTML] = false;
+        titulyZaClass[c].addEventListener("click", function (e) {
+            if (e.target.getAttribute("clicked") === "false") {
+                e.target.style.background = "#088bd6";
+                e.target.setAttribute("clicked", "true");
+            }
+            else {
+                e.target.style.background = "white";
+                e.target.setAttribute("clicked", "false");
+            }
+            var selectedTitul = e.target.innerHTML;
+            seznamTituluZaJmenem[selectedTitul] = !seznamTituluZaJmenem[selectedTitul];
+            vyrendrujTitulZa();
+        });
+    }
+    function vyrendrujTitulZa() {
+        titulZaFinal = "";
+        for (var key in seznamTituluZaJmenem) {
+            if (seznamTituluZaJmenem[key]) {
+                titulZaFinal += key + " ";
+            }
+        }
+        titulZaJmenem.innerHTML = titulZaFinal;
+    }
     /**
      * VARIABLES DECLARATION
-     */
-    var titulPredJmenem = document.getElementById("titulypred");
-    titulPredJmenem.addEventListener("change", zpracujTitulPred);
-    var titulZaJmenem = document.getElementById("titulyza");
-    titulZaJmenem.addEventListener("change", zpracujTitulZa);
+    */
     var jmenoLekare = document.getElementById("jmeno");
     jmenoLekare.addEventListener("input", function (_a) {
         var target = _a.target;
@@ -49,55 +125,20 @@
         cisloCLKFinal = target.value;
         zpracujCisloClk();
     });
-    var upraveniOsloveni = document.getElementById("upraveniosloveni");
-    var osloveniFinal = document.getElementById("osloveniFinal");
-    upraveniOsloveni.addEventListener("click", function () {
-        var inputFromUser = prompt("Upravte své jméno a tituly ve svém certifikátu", arrTitulPredJmenemFinal + " " + jmenoLekareFinal + " " + prijmeniLekareFinal + " " + arrTitulZaJmenemFinal);
-        osloveniFinal.innerHTML = inputFromUser;
-    });
     /**
      * HANDLE FUNCTION LIST
      */
     function zpracujCisloClk() {
         var shrnutiCislo = document.getElementById("shrnutiCLK");
-        shrnutiCislo.innerHTML = cisloCLKFinal;
     }
     function zpracujEmail(status) {
         var shrnutiEmail = document.getElementById("shrnutiemailu");
         if (status) {
-            shrnutiEmail.innerHTML = emailLekareFinal;
+            shrnutiEmail.innerHTML = "";
         }
         else {
             shrnutiEmail.innerHTML = '<span style="color:red">Tohle není validní email!</span>';
         }
-    }
-    function zpracujTitulPred(e) {
-        arrTitulPredJmenem = [];
-        var options = e.target.options;
-        for (var i = 0; i < options.length; i++) {
-            if (options[i].selected) {
-                arrTitulPredJmenem.push(options[i].value);
-            }
-        }
-        var shrnutiTitulPredZa = document.getElementById("shrnutititulpred");
-        var string = "";
-        arrTitulPredJmenem.forEach(function (titul) { return string += titul + " "; });
-        shrnutiTitulPredZa.innerHTML = string;
-        arrTitulPredJmenemFinal = string;
-    }
-    function zpracujTitulZa(e) {
-        arrTitulZaJmenem = [];
-        var options = e.target.options;
-        for (var i = 0; i < options.length; i++) {
-            if (options[i].selected) {
-                arrTitulZaJmenem.push(options[i].value);
-            }
-        }
-        var shrnutiTitulZa = document.getElementById("shrnutititulza");
-        var string = "";
-        arrTitulZaJmenem.forEach(function (titul) { return string += titul + " "; });
-        shrnutiTitulZa.innerHTML = string;
-        arrTitulZaJmenemFinal = string;
     }
     function zpracujJmeno() {
         var shrnutiJmena = document.getElementById("shrnutijmeno");
@@ -110,5 +151,9 @@
     function validateEmail(email) {
         var re = /\S+@\S+\.\S+/;
         return re.test(email);
+    }
+    function vyrendrujFinalniOsloveni() {
+        var finalniStringOsloveni = titulPredFinal + " " + vlastniTitulPredJmenem + " " + jmenoLekareFinal + " " + prijmeniLekareFinal + " " + vlastniTitulZaJmenem + " " + titulZaFinal;
+        console.log(finalniStringOsloveni.replace(/\s+/gi, " "));
     }
 })();

@@ -11,8 +11,10 @@ h1{
   display: flex;
   flex-direction: column;
   padding: 10px;
-  width:200px;
- 
+
+}
+#schizoform input{
+  max-width:100%
 }
 #shrnutiRegistrace {
   display: flex;
@@ -24,7 +26,7 @@ h1{
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: 300px;
+  height: 160px;
   min-width: 400px;
   position:relative;
 }
@@ -38,6 +40,7 @@ h1{
   align-items: center;
   box-shadow: 2px 2px 1pc -9px;
   position: relative;
+  justify-content: center;
 }
 #schizoform em {
   font-size: 10px;
@@ -89,15 +92,23 @@ h1{
     width: 100%;
     text-align: center;
 }
-#schizoform label{
+#schizoform label,.nadpis-titulu{
   text-align:center;
   font-size:12px;
   margin-bottom:10px;
   font-weight: bold;
   color:#088bd6;
 }
- .row{
+ #schizoform .row{
   display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+ .col{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .sendFinal{
   position: absolute;
@@ -106,5 +117,41 @@ h1{
     left: 0;
     text-align: center;
     display: block;
-    margin-bottom: -73px;
+    margin-bottom: -100px;
 }
+#osloveniFinal{
+  margin-top:100px;
+}
+.pool{
+  display:flex;
+  flex-wrap: wrap;
+ justify-content: center;
+}
+.pool span{
+  font-size: 10px;
+  padding: 4px 6px;
+  background: white;
+  margin: 1px;
+  border-radius: 3px;
+  width: 36px;
+}
+.custom-row{
+  display:flex;
+}
+.container{    width: 600px;
+  display: block;
+  margin: 0 auto;}
+  .the-title-before, .the-title-after{
+    cursor:pointer;
+  }
+  .custom-titul{
+    font-size: 12px;
+    color: #088bd6;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+  .mandatory{
+    color:red;
+  }
