@@ -15,12 +15,14 @@
     inputVlastniTitulPredJmenem.addEventListener("input", function (e) {
         vlastniTitulPredJmenem = e.target.value;
         shrnutisvehotitulupred.innerHTML = vlastniTitulPredJmenem;
+        vyrendrujFinalniOsloveni();
     });
     var inputVlastniTitulzaJmenem = document.getElementById("vlastni-titul-za-jmenem");
     var shrnutisvehotituluza = document.getElementById("shrnutisvehotituluza");
     inputVlastniTitulzaJmenem.addEventListener("input", function (e) {
         vlastniTitulZaJmenem = e.target.value;
         shrnutisvehotituluza.innerHTML = vlastniTitulZaJmenem;
+        vyrendrujFinalniOsloveni();
     });
     //Prevents form from reloading a page on submit
     var form = document.getElementById("schizoform");
@@ -59,6 +61,7 @@
             }
         }
         titulPredJmenem.innerHTML = titulPredFinal;
+        vyrendrujFinalniOsloveni();
     }
     /**
         * ZPRACOVÁNÍ TITULŮ P5ED - NEBUDE TO PRDEL
@@ -90,6 +93,7 @@
             }
         }
         titulZaJmenem.innerHTML = titulZaFinal;
+        vyrendrujFinalniOsloveni();
     }
     /**
      * VARIABLES DECLARATION
@@ -119,18 +123,25 @@
             zpracujEmail(false);
         }
     });
+    var shrnutiCislo = document.getElementById("shrnutiCLK");
     var cisloCLK = document.getElementById("clk");
     cisloCLK.addEventListener("input", function (_a) {
         var target = _a.target;
-        cisloCLKFinal = target.value;
-        zpracujCisloClk();
+        var cislo = target.value.toString();
+        if (cislo.length > 10) {
+            console.log("Špatný");
+            cisloCLK.value = cislo.slice(0, 10);
+            shrnutiCislo.innerHTML = "<span\">Maximum je 10 \u010D\u00EDsel</span>";
+        }
+        else if (cislo.length < 11) {
+            console.log("Dobrý");
+            cisloCLKFinal = target.value;
+        }
+        shrnutiCislo.innerHTML = "<span\">" + cisloCLKFinal.length + "/10</span>";
     });
     /**
      * HANDLE FUNCTION LIST
      */
-    function zpracujCisloClk() {
-        var shrnutiCislo = document.getElementById("shrnutiCLK");
-    }
     function zpracujEmail(status) {
         var shrnutiEmail = document.getElementById("shrnutiemailu");
         if (status) {
@@ -143,17 +154,39 @@
     function zpracujJmeno() {
         var shrnutiJmena = document.getElementById("shrnutijmeno");
         shrnutiJmena.innerHTML = jmenoLekareFinal;
+        vyrendrujFinalniOsloveni();
     }
     function zpracujPrijmeni() {
         var shrnutiPrijmeni = document.getElementById("shrnutiprijmeni");
         shrnutiPrijmeni.innerHTML = prijmeniLekareFinal;
+        vyrendrujFinalniOsloveni();
     }
     function validateEmail(email) {
         var re = /\S+@\S+\.\S+/;
         return re.test(email);
     }
+    var formSeShrnutim = document.getElementById("osloveniFinal");
+    var vtipnahlaska = document.getElementById("vtipnahlaska");
     function vyrendrujFinalniOsloveni() {
         var finalniStringOsloveni = titulPredFinal + " " + vlastniTitulPredJmenem + " " + jmenoLekareFinal + " " + prijmeniLekareFinal + " " + vlastniTitulZaJmenem + " " + titulZaFinal;
-        console.log(finalniStringOsloveni.replace(/\s+/gi, " "));
+        console.log(finalniStringOsloveni.length);
+        if (finalniStringOsloveni.length > 40 && finalniStringOsloveni.length <= 60) {
+            console.log("Aktivuji pravidlo pro 40");
+            formSeShrnutim.style.fontSize = "12px";
+            vtipnahlaska.innerHTML = "";
+        }
+        else if (finalniStringOsloveni.length > 60 && finalniStringOsloveni.length <= 85) {
+            formSeShrnutim.style.fontSize = "8px";
+            vtipnahlaska.innerHTML = "";
+        }
+        else if (finalniStringOsloveni.length > 85) {
+            formSeShrnutim.style.fontSize = "5px";
+            vtipnahlaska.innerHTML = "<span style=\"color:red;font-size:12px\">A nen\u00ED t\u011Bch titul\u016F m\u00E1lo, Antone Pavlovi\u010Di? :-)</span>";
+        }
+        else {
+            formSeShrnutim.style.fontSize = "16px";
+            vtipnahlaska.innerHTML = "";
+        }
+        finalniStringOsloveni.replace(/\s+/gi, " "); //Rozmrdá všechna nadbytečná oslovení!
     }
 })();
