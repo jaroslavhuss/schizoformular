@@ -1,4 +1,4 @@
-(function () {
+window.addEventListener('load', function () {
     var jmenoLekareFinal = ""; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     var prijmeniLekareFinal = "";
     var emailLekareFinal = "";
@@ -167,9 +167,9 @@
     }
     var formSeShrnutim = document.getElementById("osloveniFinal");
     var vtipnahlaska = document.getElementById("vtipnahlaska");
+    var kompletace = document.getElementById("celkoveosloveni");
     function vyrendrujFinalniOsloveni() {
         var finalniStringOsloveni = titulPredFinal + " " + vlastniTitulPredJmenem + " " + jmenoLekareFinal + " " + prijmeniLekareFinal + " " + vlastniTitulZaJmenem + " " + titulZaFinal;
-        console.log(finalniStringOsloveni.length);
         if (finalniStringOsloveni.length > 40 && finalniStringOsloveni.length <= 60) {
             console.log("Aktivuji pravidlo pro 40");
             formSeShrnutim.style.fontSize = "12px";
@@ -188,5 +188,6 @@
             vtipnahlaska.innerHTML = "";
         }
         finalniStringOsloveni.replace(/\s+/gi, " "); //Rozmrdá všechna nadbytečná oslovení!
+        kompletace.value = finalniStringOsloveni.replace(/\s+/gi, " ");
     }
-})();
+});

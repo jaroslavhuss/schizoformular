@@ -60,7 +60,7 @@ h1{
     box-shadow: 9px -12px 1pc -24px;
     background:#098bd6;
 }
- input[type="submit"],.btn{
+#schizoform input[type="submit"],.btn{
   padding: 24px 0px;
   text-align: center;
   border-bottom: 1px solid #098bd6;
@@ -73,7 +73,7 @@ h1{
   border-radius:12px;
   cursor:pointer;
 }
-.btn{
+#schizoform .btn{
    background-color:rosybrown;
    display:inline-block;
 }
@@ -104,13 +104,13 @@ h1{
   justify-content: center;
   flex-wrap: wrap;
 }
- .col{
+#schizoform .col{
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.sendFinal{
+#schizoform .sendFinal{
   position: absolute;
     bottom: 0;
     width: 100%;
@@ -122,12 +122,12 @@ h1{
 #osloveniFinal{
   margin-top:100px;
 }
-.pool{
+#schizoform .pool{
   display:flex;
   flex-wrap: wrap;
  justify-content: center;
 }
-.pool span{
+#schizoform .pool span{
   font-size: 10px;
   padding: 4px 6px;
   background: white;
@@ -135,16 +135,16 @@ h1{
   border-radius: 3px;
   width: 36px;
 }
-.custom-row{
+#schizoform .custom-row{
   display:flex;
 }
-.container{    width: 600px;
+#schizoform .container{    width: 600px;
   display: block;
   margin: 0 auto;}
-  .the-title-before, .the-title-after{
+  #schizoform  .the-title-before, .the-title-after{
     cursor:pointer;
   }
-  .custom-titul{
+  #schizoform .custom-titul{
     font-size: 12px;
     color: #088bd6;
     font-weight: bold;
@@ -152,6 +152,6 @@ h1{
     margin: 0 auto;
     display: block;
   }
-  .mandatory{
+  #schizoform .mandatory{
     color:red;
   }

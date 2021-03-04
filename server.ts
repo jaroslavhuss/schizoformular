@@ -1,4 +1,4 @@
-(function () {
+window.addEventListener('load', () => {
     let jmenoLekareFinal:string = "";//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     let prijmeniLekareFinal:string = "";
     let emailLekareFinal:string = "";
@@ -172,9 +172,9 @@
     }
     const formSeShrnutim:any = document.getElementById("osloveniFinal");
     const vtipnahlaska:any = document.getElementById("vtipnahlaska");
+    const kompletace:any = document.getElementById("celkoveosloveni");
     function vyrendrujFinalniOsloveni(){
         let finalniStringOsloveni: string = `${titulPredFinal} ${vlastniTitulPredJmenem} ${jmenoLekareFinal} ${prijmeniLekareFinal} ${vlastniTitulZaJmenem} ${titulZaFinal}`;
-      console.log(finalniStringOsloveni.length);
       if(finalniStringOsloveni.length > 40 && finalniStringOsloveni.length <=60){
           console.log("Aktivuji pravidlo pro 40")
         formSeShrnutim.style.fontSize = "12px";
@@ -193,7 +193,9 @@
         vtipnahlaska.innerHTML = "";
       }
         finalniStringOsloveni.replace(/\s+/gi," "); //Rozmrdá všechna nadbytečná oslovení!
-
+        kompletace.value = finalniStringOsloveni.replace(/\s+/gi," ");
     }
- })();
+    
+  });
+
 
